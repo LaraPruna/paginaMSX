@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta content="description" name="description">
+  <meta name="google" content="notranslate" />
+  <meta content="Mashup templates have been developped by Orson.io team" name="author">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="{{url_for('static', filename='1200px-MSX-Logo.svg')}}">
+  <link href="{{url_for('static', filename='assets/favicon.ico')}}" rel="icon">
+
+  <title>{% block title %}{%endblock%}</title>
+
+<link href="{{url_for('static', filename='main.550dcf66.css')}}" rel="stylesheet"></head>
+
+<body> <!-- Add your content of header -->
+<header>
+  <nav class="navbar navbar-default active">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="base.html" title="">Home</a></li>
+          <li><a href="project.html" title="">Project</a></li>
+          <li>
+            <p>
+              <a href="components.html" class="btn btn-default navbar-btn" title="">Components</a>
+            </p>
+          </li>
+
+        </ul>
+      </div> 
+    </div>
+  </nav>
+</header>
+<a class="navbar-brand" href="base.html" title="">
+          <img src="{{url_for('static', filename='assets/1200px-MSX-Logo.svg.png')}}" width=500 style='margin-left: 400px' class="navbar-logo-img" alt="">
+        </a>
+<!-- Add your site or app content here -->
+  {% block content %}{%endblock%}
+</body>
+</html>
