@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Juegos MSX{% endblock %}
+{% block content %}
+  <div class="hero-full-container background-image-container white-text-container">
+    <div class="container">
+  <table style="box-shadow: 0 0 20px rgba(0,0,0,0.1)">
+    <thead>
+      <tr>
+        <th style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;">Nombre</th>
+        <th style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;">Desarrollador</th>
+        <th style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;">Detalle</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if juego == "" %}
+        {% for dato in datos %}
+       <tr>
+        <td style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;">{{dato.nombre}}</td>
+        <td style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;">{{dato.desarrollador}}</td>
+        <td style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;"><a href="/juego/{{dato.id}}">Detalle</a></td>
+      </tr>
+      {% endfor %}
+      {% else %}
+        {% for dato in datos %}
+          {% if dato.nombre.startswith(juego) %}
+        <tr>
+        <td style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;">{{dato.nombre}}</td>
+        <td style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;">{{dato.desarrollador}}</td>
+        <td style="padding: 15px;
+  background-color: rgba(255,255,255,0.2);
+  color: #fff;"><a href="/juego/{{dato.id}}">Detalle</a></td>
+      </tr>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+  </div>
+{% endblock %}

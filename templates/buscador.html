@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Juegos MSX{% endblock %}
+{% block content %}
+  <div class="hero-full-container background-image-container white-text-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>Buscador de juegos</h1>
+    {% if error %}
+        <p><strong>No hay ningún juego en la biblioteca con ese nombre.</strong></p>
+    {% endif %}
+    <form action="/listajuegos" method="post">
+        <label style='color: white'><b>JUEGO:</b></label>
+        <input type="text" name="juego" value="{{juego}}"/>
+        <input type="submit" value="Enviar"/>
+    </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{%endblock%}

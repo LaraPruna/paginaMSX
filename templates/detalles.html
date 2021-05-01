@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Juegos MSX{% endblock %}
+{% block content %}
+ <div class="hero-full-container background-image-container white-text-container">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <h1>{{detalles.nombre}}</h1>
+    		<ul style="color: white">
+    			<li>Sistema: {{detalles.sistema}}</li>
+    			<li>Distribuidor: {{detalles.distribuidor}}</li>
+    			<li>Desarrollador: {{detalles.desarrollador}}</li>
+    			<li>Categoría: {{detalles.categoria}}</li>
+    			<li>Año: {{detalles.anno}}</li>
+    		</ul>
+    		<a href="/juegos">Volver al buscador</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
