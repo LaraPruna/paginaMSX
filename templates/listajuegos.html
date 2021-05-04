@@ -39,6 +39,8 @@
       {% else %}
         {% for dato in datos %}
           {% if dato.nombre.startswith(juego) %}
+            {% for cat in categorias %}
+              {% if dato.categoria == cat.texto and seleccionado == cat.valor %}
          <tr>
         <td style="padding: 15px;
   background-color: rgba(255,255,255,0.2);
@@ -52,6 +54,8 @@
       </tr>
           {% endif %}
         {% endfor %}
+      {% endif %}
+      {% endfor %}
       {% endif %}
     </tbody>
   </table>
