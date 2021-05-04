@@ -11,19 +11,29 @@ def inicio():
 
 @app.route('/juegos',methods=["GET","POST"])
 def buscador():
+	ind=False
 	if request.method=="GET":
 		return render_template("buscador.html")
 	else:
 		juego=request.form.get("juego")
+		lista=[]
 		if juego != None:
-			lista=[]
-		for dato in datos:
-			dic={}
-			dic['nombre']=dato.get("nombre")
-			dic['desarrollador']=dato.get("desarrollador")
-			dic['id']=dato.get("id")
-			lista.append(dic)
-		return render_template("listajuegos.html",juego=juego,lista=lista,datos=datos)
+			for dato in datos:
+				dic={}
+				dic['nombre']=dato.get("nombre")
+				dic['desarrollador']=dato.get("desarrollador")
+				dic['id']=dato.get("id")
+				lista.append(dic)
+			return render_template("listajuegos.html",juego=juego,lista=lista,datos=datos)
+		else:
+			for dato in datos:
+				if juego not in dato.get("nombre"):
+					ind=True
+			if ind:
+				return render_template("listajuegos.html",juego=juego,lista=lista,datos=,error=True)
+			else:
+				return render_template("listajuegos.html",juego=juego,lista=lista,datos=datos)
+		
 
 @app.route('/juego/<int:identificador>')
 def detalles(identificador):
