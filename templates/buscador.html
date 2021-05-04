@@ -9,7 +9,7 @@
     {% if error %}
         <p><strong>No hay ningún juego en la biblioteca con ese nombre.</strong></p>
     {% endif %}
-    <form action="/listajuegos" method="post">
+    <form action="/juegos" method="post">
         <label style='color: white'><b>JUEGO:</b></label>
         <input type="text" name="juego" value="{{juego}}"/>
         <input type="submit" value="Enviar"/>
