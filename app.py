@@ -11,29 +11,31 @@ def inicio():
 
 @app.route('/juegos',methods=["GET","POST"])
 def buscador():
-	ind=False
+	ind=True
+	juego=request.form.get("juego")
+	lista=[]
+	for dato in datos:
+		if dato.get("categoria") not in lista:
+			lista.append(dato.get("categoria"))
+	categorias=[]
+	for cat in lista:
+		dic={}
+		dic['valor']=lista.index(cat)+1
+		dic['texto']=cat
+		categorias.append(dic)
 	if request.method=="GET":
-		return render_template("buscador.html")
+		return render_template("buscador.html",categorias=categorias,datos=datos)
 	else:
-		juego=request.form.get("juego")
-		lista=[]
-		if juego != None:
-			for dato in datos:
-				dic={}
-				dic['nombre']=dato.get("nombre")
-				dic['desarrollador']=dato.get("desarrollador")
-				dic['id']=dato.get("id")
-				lista.append(dic)
-			return render_template("listajuegos.html",juego=juego,lista=lista,datos=datos)
+		so=request.form.get("categoria")
+		for dato in datos:
+			if juego in dato.get('nombre'):
+				for cat in categorias:
+					if dato.get("categoria")==cat.get('texto') and int(so)==cat.get('valor'):
+						ind=False
+		if ind:
+			return render_template("buscador.html",juego=juego,datos=datos,seleccionado=int(so),categorias=categorias,error=True)
 		else:
-			for dato in datos:
-				if juego not in dato.get("nombre"):
-					ind=True
-			if ind:
-				return render_template("listajuegos.html",juego=juego,lista=lista,datos=,error=True)
-			else:
-				return render_template("listajuegos.html",juego=juego,lista=lista,datos=datos)
-		
+			return render_template("listajuegos.html",juego=juego,categorias=categorias,seleccionado=int(so),datos=datos)
 
 @app.route('/juego/<int:identificador>')
 def detalles(identificador):

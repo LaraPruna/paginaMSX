@@ -1,17 +1,27 @@
 {% extends "base.html" %}
 {% block title %}Juegos MSX{% endblock %}
 {% block content %}
+{% if error %}
+    <p style='margin-left: 500px'><strong>No hay ningún juego en la biblioteca con ese nombre y esa categoría.</strong></p>
+{% endif %}
   <div class="hero-full-container background-image-container white-text-container">
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
           <h1>Buscador de juegos</h1>
-    {% if error %}
-        <p><strong>No hay ningún juego en la biblioteca con ese nombre.</strong></p>
-    {% endif %}
     <form action="/juegos" method="post">
         <label style='color: white'><b>JUEGO:</b></label>
         <input type="text" name="juego" value="{{juego}}"/>
+        <select name="categoria">
+            {% for cat in categorias %}
+                {% if seleccionado==cat.valor %}
+                    <option selected value="{{cat.valor}}">{{cat.texto}}</option>
+                {% else %}
+                    <option value="{{cat.valor}}">{{cat.texto}}</option>
+                {% endif %}
+            {% endfor %}
+        </select> 
+        <br/>
         <input type="submit" value="Enviar"/>
     </form>
         </div>
