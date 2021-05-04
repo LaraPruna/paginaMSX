@@ -9,7 +9,7 @@ with open("./MSX.json") as fichero:
 def inicio():
 	return render_template("inicio.html")
 
-@app.route('/juegos')
+@app.route('/juegos',methods=["GET","POST"])
 def buscador():
 	if request.method=="GET":
 		return render_template("buscador.html")
